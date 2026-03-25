@@ -5,9 +5,11 @@
 ---
 
 ## Список проектов
-
+ 
+ - Пример [Nginx](Nginx.md) — Веб-сервер Nginx в Docker контейнере
+ 
 1. [Apache](Apache.md) — Веб-сервер Apache в Docker контейнере
-2. [Nginx](Nginx.md) — Веб-сервер Nginx в Docker контейнере
+2. 
 
 ---
 
