@@ -29,6 +29,9 @@ function Show-Help {
     Write-Host ""
     Write-Host "Example with new terminal:" -ForegroundColor Green
     Write-Host "  powershell -NoExit -Command '.\sync_repos.ps1 -SourceRepoPath C:\path\to\source\repo -DestRepoPath C:\path\to\dest\repo -DoGitPush'"
+    Write-Host ""
+    Write-Host "Note: Script copies files from source to destination, updating existing files," -ForegroundColor Yellow
+    Write-Host "      but does NOT delete files that don't exist in source." -ForegroundColor Yellow
 }
 
 if ($Help) {
@@ -105,16 +108,13 @@ Push-Location $DestRepoPath
 $SourceItems = Get-ChildItem $SourceRepoPath -Force | Where-Object { $_.Name -ne ".git" }
 
 foreach ($Item in $SourceItems) {
-    $DestPath = Join-Path $DestRepoPath $Item.Name
-    
-    if (Test-Path $DestPath) {
-        Write-Host "  Replace: $($Item.Name)" -ForegroundColor Yellow
-        Remove-Item $DestPath -Recurse -Force
-        Copy-Item $Item.FullName $DestRepoPath -Recurse -Force
+    if (Test-Path $Item.Name) {
+        Write-Host "  Update: $($Item.Name)" -ForegroundColor Yellow
     } else {
         Write-Host "  Copy: $($Item.Name)"
-        Copy-Item $Item.FullName $DestRepoPath -Recurse -Force
     }
+    
+    Copy-Item $Item.FullName $DestRepoPath -Recurse -Force
 }
 
 Write-Host "Files copied" -ForegroundColor Green

@@ -25,6 +25,9 @@ while [[ "$#" -gt 0 ]]; do
             echo ""
             echo "Пример:"
             echo "  $0 --source /path/to/source/repo --dest /path/to/dest/repo --push"
+            echo ""
+            echo "Примечание: Скрипт копирует файлы из исходного репозитория в целевой,"
+            echo "          обновляя существующие файлы, но НЕ удаляет файлы, которых нет в исходном репозитории."
             exit 0
             ;;
         *) echo "Неизвестный параметр: $1"; exit 1 ;;
@@ -81,20 +84,20 @@ SOURCE_REMOTE=$(cd "$SOURCE_REPO_PATH" && git remote get-url origin 2>/dev/null 
 DEST_REMOTE=$(cd "$DEST_REPO_PATH" && git remote get-url origin 2>/dev/null || echo "")
 
 if [[ "$SOURCE_REMOTE" == *@*:* ]] || [[ "$SOURCE_REMOTE" == git@* ]]; then
-    echo "⚠️  Предупреждение: Исходный репозиторий может быть приватным (SSH URL)"
+    echo "Предупреждение: Исходный репозиторий может быть приватным (SSH URL)"
 fi
 
 if [[ "$DEST_REMOTE" == *@*:* ]] || [[ "$DEST_REMOTE" == git@* ]]; then
-    echo "⚠️  Предупреждение: Целевой репозиторий может быть приватным (SSH URL)"
+    echo "Предупреждение: Целевой репозиторий может быть приватным (SSH URL)"
 fi
 
 echo ""
 echo "[1/4] Выполнение git pull в исходном репозитории..."
 cd "$SOURCE_REPO_PATH"
 if git pull; then
-    echo "✓ Git pull выполнен успешно"
+    echo "Git pull выполнен успешно"
 else
-    echo "⚠️  Предупреждение: Git pull завершился с ошибками, продолжаем..."
+    echo "Предупреждение: Git pull завершился с ошибками, продолжаем..."
 fi
 
 echo ""
@@ -110,8 +113,7 @@ for item in "$SOURCE_REPO_PATH"/*; do
     fi
     
     if [ -e "$ITEM_NAME" ]; then
-        echo "  Замена: $ITEM_NAME"
-        rm -rf "$ITEM_NAME"
+        echo "  Обновление: $ITEM_NAME"
     else
         echo "  Копирование: $ITEM_NAME"
     fi
@@ -119,7 +121,7 @@ for item in "$SOURCE_REPO_PATH"/*; do
     cp -r "$item" .
 done
 
-echo "✓ Файлы скопированы"
+echo "Файлы скопированы"
 
 echo ""
 echo "[3/4] Проверка статуса целевого репозитория..."
@@ -127,7 +129,7 @@ cd "$DEST_REPO_PATH"
 STATUS_OUTPUT=$(git status --porcelain 2>/dev/null || echo "")
 
 if [ -z "$STATUS_OUTPUT" ]; then
-    echo "✓ Нет изменений для фиксации"
+    echo "Нет изменений для фиксации"
 else
     echo "Обнаружены изменения:"
     echo "$STATUS_OUTPUT"
@@ -135,13 +137,13 @@ else
     echo ""
     echo "Добавление изменений в индекс..."
     git add .
-    echo "✓ Изменения добавлены"
+    echo "Изменения добавлены"
     
     echo ""
     echo "Создание коммита..."
     COMMIT_MSG="Синхронизация с $SOURCE_REPO_NAME от $(date '+%Y-%m-%d %H:%M:%S')"
     git commit -m "$COMMIT_MSG"
-    echo "✓ Коммит создан: $COMMIT_MSG"
+    echo "Коммит создан: $COMMIT_MSG"
 fi
 
 if [ "$DO_GIT_PUSH" = true ]; then
@@ -149,9 +151,9 @@ if [ "$DO_GIT_PUSH" = true ]; then
     echo "[4/4] Выполнение git push в целевом репозитории..."
     cd "$DEST_REPO_PATH"
     if git push; then
-        echo "✓ Git push выполнен успешно"
+        echo "Git push выполнен успешно"
     else
-        echo "⚠️  Ошибка: Git push завершился с ошибкой"
+        echo "Ошибка: Git push завершился с ошибкой"
         exit 1
     fi
 else
@@ -161,5 +163,5 @@ fi
 
 echo ""
 echo "========================================"
-echo "✓ Синхронизация завершена успешно!"
+echo "Синхронизация завершена успешно!"
 echo "========================================"
