@@ -3,6 +3,7 @@
 Выполните все этапы работы с проектом по примеру с [Nginx](/content/Docker/ImageLibrary/Nginx.md)
 
 > Никогда в разработке не используйте русские имена файлов и каталогов!
+
 > Никогда в разработке не используйте пробелы и спец.символы в именах файлов и каталогов!
 
 ```
@@ -41,3 +42,5 @@ docker rmi tleemcjr/metasploitable2
 ```
 
 [Metasploitable2 на Docker hub](https://hub.docker.com/r/tleemcjr/metasploitable2#!)
+
+> Если вы обнаружили ошибку в этом тексте - сообщите пожалуйста автору!

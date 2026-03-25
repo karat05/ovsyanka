@@ -3,6 +3,7 @@
 Выполните все этапы работы с проектом по примеру с [Nginx](/content/Docker/ImageLibrary/Nginx.md)
 
 > Никогда в разработке не используйте русские имена файлов и каталогов!
+
 > Никогда в разработке не используйте пробелы и спец.символы в именах файлов и каталогов!!
 
 #### Использовать контейнер с Alt
@@ -39,3 +40,5 @@ exit
 [Dockerfile](https://github.com/alt-cloud/docker-brew-alt/blob/p10/x86_64/Dockerfile)
 
 [Docker Alt Linux Image](https://github.com/sibsau/docker-alt/blob/master/README.md)
+
+> Если вы обнаружили ошибку в этом тексте - сообщите пожалуйста автору!
