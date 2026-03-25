@@ -13,6 +13,10 @@ myNotes/
 │   ├── sync_repos.ps1    # PowerShell скрипт
 │   ├── sync_repos.sh     # Bash скрипт
 │   └── README.md        # Подробная документация
+├── docker-projects/         # Docker-проекты с инструкциями
+│   ├── README.md        # Список Docker-проектов
+│   ├── Apache.md        # Apache в Docker
+│   └── Nginx.md         # Nginx в Docker
 └── [другие проекты...]      # Будущие папки с проектами
 ```
 
@@ -51,6 +55,20 @@ myNotes/
 # Linux/WSL
 ./sync_repos.sh --source ~/Projects/source --dest ~/Projects/dest --push
 ```
+
+---
+
+### 2. [Docker-проекты](docker-projects/)
+
+**Статус:** ✅ В процессе
+
+**Описание:** Пошаговые инструкции по запуску Docker контейнеров из готовых образов с местами для вставки скриншотов.
+
+**Проекты:**
+- [Apache](docker-projects/Apache.md) — Веб-сервер Apache в Docker
+- [Nginx](docker-projects/Nginx.md) — Веб-сервер Nginx в Docker
+
+**Инструкции:** [Полный список проектов →](docker-projects/README.md)
 
 ---
 
