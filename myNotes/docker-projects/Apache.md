@@ -14,7 +14,7 @@
 
 Откройте адрес http://localhost:8081 в браузере
 
-![alt text](image.png)
+![alt text](image-1.png)
 
 ---
 
