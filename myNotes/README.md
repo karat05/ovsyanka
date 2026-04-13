@@ -12,6 +12,9 @@ myNotes/
 ├── fefe/
 │   ├── README.md
 │   └── image-*.png
+├── wsl/
+│   ├── README.md
+│   └── image-*.png
 └── skriptRepo/
     ├── README.md
     ├── sync_repos.ps1
@@ -33,11 +36,17 @@ myNotes/
 - Bash: [sync_repos.sh](skriptRepo/sync_repos.sh)
 - Документация: [skriptRepo/README.md](skriptRepo/README.md)
 
+### 3) Контейнерные задания в WSL (Dockerfile)
+
+- Задания выполнены в WSL и оформлены со скриншотами: [wsl/README.md](wsl/README.md)
+- Внутри: команды сборки/запуска контейнеров по Dockerfile и результаты выполнения
+
 ---
 
 ## ⚡ Быстрый доступ
 
 - Docker-практика: [Открыть fefe/README.md](fefe/README.md)
+- Dockerfile в WSL: [Открыть wsl/README.md](wsl/README.md)
 - Скрипты и инструкции: [Открыть папку skriptRepo](skriptRepo/)
 
 ---
