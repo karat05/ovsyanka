@@ -1,6 +1,6 @@
 # 🚀 Мои заметки и выполненные задания
 
-Здесь собраны выполненные задания по Docker и скрипты синхронизации репозиториев.
+Здесь собраны выполненные задания по Docker, CI/CD и скрипты синхронизации репозиториев.
 
 ---
 
@@ -15,6 +15,8 @@ myNotes/
 ├── wsl/
 │   ├── README.md
 │   └── image-*.png
+├── cicd/
+│   └── README.md
 └── skriptRepo/
     ├── README.md
     ├── sync_repos.ps1
@@ -41,12 +43,18 @@ myNotes/
 - Задания выполнены в WSL и оформлены со скриншотами: [wsl/README.md](wsl/README.md)
 - Внутри: команды сборки/запуска контейнеров по Dockerfile и результаты выполнения
 
+### 4) CI/CD задания (GitHub Actions)
+
+- Выполненные задания по CI/CD: [cicd/README.md](cicd/README.md)
+- Внутри: пайплайны для hello, Python, Node.js, Go, Rust и места для скриншотов
+
 ---
 
 ## ⚡ Быстрый доступ
 
 - Docker-практика: [Открыть fefe/README.md](fefe/README.md)
 - Dockerfile в WSL: [Открыть wsl/README.md](wsl/README.md)
+- CI/CD практика: [Открыть cicd/README.md](cicd/README.md)
 - Скрипты и инструкции: [Открыть папку skriptRepo](skriptRepo/)
 
 ---
