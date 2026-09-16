@@ -1,6 +1,15 @@
 # 🚀 Мои заметки и выполненные задания
 
-Здесь собраны выполненные задания по Docker, CI/CD и скрипты синхронизации репозиториев.
+> **Дата создания:** 10.09.2026 | **Дата обновления:** 16.09.2026
+
+Здесь собраны выполненные задания по Docker, CI/CD и скрипты синхронизации репозиториев. Репозиторий служит личной базой знаний по администрированию серверов и автоматизации процессов.
+
+### 🛠 Используемые технологии:
+- **Контейнеризация:** Docker, Docker Compose, Dockerfile.
+- **Окружение:** Linux (Ubuntu/Debian), WSL2.
+- **Автоматизация:** GitHub Actions (CI/CD), PowerShell, Bash.
+- **СУБД:** MySQL, PostgreSQL, MariaDB, SQLite.
+- **Инструменты:** pgAdmin, phpMyAdmin, CloudBeaver, drawDB.
 
 ---
 
@@ -9,6 +18,8 @@
 ```
 myNotes/
 ├── README.md
+├── docker/
+│   └── README.md
 ├── fefe/
 │   ├── README.md
 │   └── image-*.png
@@ -48,11 +59,17 @@ myNotes/
 - Выполненные задания по CI/CD: [cicd/README.md](cicd/README.md)
 - Внутри: пайплайны для hello, Python, Node.js, Go, Rust и места для скриншотов
 
+### 5) Docker Compose задания (Docker Compose)
+
+- Подробные отчеты по развертыванию 9 сервисов: [docker/README.md](docker/README.md)
+- Внутри: конфигурации (Joomla, WordPress, DB-менеджеры), порты и скриншоты работы
+
 ---
 
 ## ⚡ Быстрый доступ
 
 - Docker-практика: [Открыть fefe/README.md](fefe/README.md)
+- Docker Compose: [Открыть docker/README.md](docker/README.md)
 - Dockerfile в WSL: [Открыть wsl/README.md](wsl/README.md)
 - CI/CD практика: [Открыть cicd/README.md](cicd/README.md)
 - Скрипты и инструкции: [Открыть папку skriptRepo](skriptRepo/)
