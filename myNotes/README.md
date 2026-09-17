@@ -1,6 +1,6 @@
 # 🚀 Мои заметки и выполненные задания
 
-> **Дата создания:** 10.09.2026 | **Дата обновления:** 16.09.2026
+> **Дата создания:** 10.09.2026 | **Дата обновления:** 17.09.2026
 
 Здесь собраны выполненные задания по Docker, CI/CD и скрипты синхронизации репозиториев. Репозиторий служит личной базой знаний по администрированию серверов и автоматизации процессов.
 
@@ -19,6 +19,8 @@
 myNotes/
 ├── README.md
 ├── docker/
+│   └── README.md
+├── dockerfile/
 │   └── README.md
 ├── fefe/
 │   ├── README.md
@@ -64,12 +66,18 @@ myNotes/
 - Подробные отчеты по развертыванию 9 сервисов: [docker/README.md](docker/README.md)
 - Внутри: конфигурации (Joomla, WordPress, DB-менеджеры), порты и скриншоты работы
 
+### 6) Dockerfile задания (Dockerfile)
+
+- Практика по созданию образов (18+3 задания): [dockerfile/README.md](dockerfile/README.md)
+- Внутри: сборка приложений на разных языках (C++, Python, Rust, Java и др.) и скриншоты
+
 ---
 
 ## ⚡ Быстрый доступ
 
 - Docker-практика: [Открыть fefe/README.md](fefe/README.md)
 - Docker Compose: [Открыть docker/README.md](docker/README.md)
+- Dockerfile проекты: [Открыть dockerfile/README.md](dockerfile/README.md)
 - Dockerfile в WSL: [Открыть wsl/README.md](wsl/README.md)
 - CI/CD практика: [Открыть cicd/README.md](cicd/README.md)
 - Скрипты и инструкции: [Открыть папку skriptRepo](skriptRepo/)
