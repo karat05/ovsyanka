@@ -37,8 +37,8 @@
 
 - **Порт:** 8082
 - **Скриншоты работы:**
-  ![Joomla Setup](../../content/Docker/DockerCompose/img/8.png)
-  ![Joomla Dashboard](../../content/Docker/DockerCompose/img/12.png)
+  ![Joomla Setup](./Снимок экрана 2026-09-16 140304.png)
+  ![Joomla Dashboard](./Снимок экрана 2026-09-16 140541.png)
 
 ---
 
@@ -55,7 +55,7 @@
 
 - **Порт:** 8081
 - **Скриншот работы:**
-  ![WordPress Frontend](../../content/Docker/DockerCompose/img/6.png)
+  ![WordPress Frontend](./Снимок экрана 2026-09-16 142033.png)
 
 ---
 
@@ -72,7 +72,7 @@
 
 - **Порт:** 8083
 - **Скриншот работы:**
-  ![phpMyAdmin Dashboard](../../content/Docker/DockerCompose/img/14.png)
+  ![phpMyAdmin Dashboard](./Снимок экрана 2026-09-16 144523.png)
 
 ---
 
@@ -105,7 +105,7 @@
 
 - **Порт:** 5050
 - **Скриншот работы:**
-  ![pgAdmin Dashboard](../../content/Docker/DockerCompose/img/19.png)
+  ![pgAdmin Dashboard](./Снимок экрана 2026-09-16 150534.png)
 
 ---
 
