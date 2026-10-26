@@ -8,10 +8,10 @@
 
 | № | Проект | Репозиторий | Результат |
 |:--:|:--|:--|:--|
-| 1 | Python | [my-python-app](https://github.com/karat05/my-python-app) | GitHub Actions и запуск Docker |
-| 2 | Node.js | [my-node-app](https://github.com/karat05/my-node-app) | GitHub Actions и Docker |
-| 3 | Go | [my-go-app](https://github.com/karat05/my-go-app) | GitHub Actions и Docker |
-| 4 | Rust | [my-rust-app](https://github.com/karat05/my-rust-app) | GitHub Actions и Docker |
+| 1 | Python | [my-python-app](https://github.com/karat05/my-python-app-) | GitHub Actions и запуск Docker |
+| 2 | Node.js | [my-node-app](https://github.com/karat05/my-node-app-) | GitHub Actions и Docker |
+| 3 | Go | [my-go-app](https://github.com/karat05/my-go-app-) | GitHub Actions и Docker |
+| 4 | Rust | [my-rust-app](https://github.com/karat05/my-rust-app-) | GitHub Actions и Docker |
 | 5 | PHP | [my-php-app](https://github.com/karat05/my-php-app) | GitHub Actions и Docker |
 | 6 | C++ | [my-cpp-app](https://github.com/karat05/my-cpp-app) | GitHub Actions и Docker |
 | 7 | Java | [hello-java](https://github.com/karat05/hello-java) | GitHub Actions и Docker |
@@ -21,7 +21,7 @@
 
 ## 1. Python
 
-**Репозиторий:** [karat05/my-python-app](https://github.com/karat05/my-python-app)
+**Репозиторий:** [karat05/my-python-app](https://github.com/karat05/my-python-app-)
 
 ### Ход выполнения
 
@@ -37,7 +37,7 @@
 
 ## 2. Node.js
 
-**Репозиторий:** [karat05/my-node-app](https://github.com/karat05/my-node-app)
+**Репозиторий:** [karat05/my-node-app](https://github.com/karat05/my-node-app-)
 
 ### Ход выполнения
 
@@ -53,7 +53,7 @@
 
 ## 3. Go
 
-**Репозиторий:** [karat05/my-go-app](https://github.com/karat05/my-go-app)
+**Репозиторий:** [karat05/my-go-app](https://github.com/karat05/my-go-app-)
 
 ### Ход выполнения
 
@@ -69,7 +69,7 @@
 
 ## 4. Rust
 
-**Репозиторий:** [karat05/my-rust-app](https://github.com/karat05/my-rust-app)
+**Репозиторий:** [karat05/my-rust-app](https://github.com/karat05/my-rust-app-)
 
 ### Ход выполнения
 
