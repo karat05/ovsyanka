@@ -1,6 +1,6 @@
 # 🚀 Мои заметки и выполненные задания
 
-> **Дата создания:** 10.09.2026 | **Дата обновления:** 17.09.2026
+> **Дата создания:** 10.09.2026 | **Дата обновления:** 26.10.2026
 
 Здесь собраны выполненные задания по Docker, CI/CD и скрипты синхронизации репозиториев. Репозиторий служит личной базой знаний по администрированию серверов и автоматизации процессов.
 
@@ -29,7 +29,9 @@ myNotes/
 │   ├── README.md
 │   └── image-*.png
 ├── cicd/
-│   └── README.md
+│   ├── README.md       # навигация по годам
+│   ├── 2025/README.md  # отчёт и скриншоты за 2025 год
+│   └── 2026/           # отчёт и скриншоты за 2026 год
 └── skriptRepo/
     ├── README.md
     ├── sync_repos.ps1
@@ -58,8 +60,10 @@ myNotes/
 
 ### 4) CI/CD задания (GitHub Actions)
 
-- Выполненные задания по CI/CD: [cicd/README.md](cicd/README.md)
-- Внутри: пайплайны для hello, Python, Node.js, Go, Rust и места для скриншотов
+- Задания CI/CD за 2025 год: [cicd/2025/README.md](cicd/2025/README.md)
+- Задания CI/CD за 2026 год: [cicd/2026/README.md](cicd/2026/README.md)
+- Скриншоты выполненных проектов 2026 года сохранены в [cicd/2026/images/](cicd/2026/images/)
+- Внутри: подробные материалы за 2025 год и отчёт за 2026 год с восемью проектами, ссылками на GitHub и скриншотами
 
 ### 5) Docker Compose задания (Docker Compose)
 
@@ -79,7 +83,8 @@ myNotes/
 - Docker Compose: [Открыть docker/README.md](docker/README.md)
 - Dockerfile проекты: [Открыть dockerfile/README.md](dockerfile/README.md)
 - Dockerfile в WSL: [Открыть wsl/README.md](wsl/README.md)
-- CI/CD практика: [Открыть cicd/README.md](cicd/README.md)
+- CI/CD 2025: [Открыть отчёт](cicd/2025/README.md)
+- CI/CD 2026: [Открыть отчёт](cicd/2026/README.md)
 - Скрипты и инструкции: [Открыть папку skriptRepo](skriptRepo/)
 
 ---
