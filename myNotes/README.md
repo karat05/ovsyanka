@@ -1,8 +1,8 @@
 # 🚀 Мои заметки и выполненные задания
 
-> **Дата создания:** 10.09.2026 | **Дата обновления:** 26.10.2026
+> **Дата создания:** 10.09.2026 | **Дата обновления:** 05.11.2026
 
-Здесь собраны выполненные задания по Docker, CI/CD и скрипты синхронизации репозиториев. Репозиторий служит личной базой знаний по администрированию серверов и автоматизации процессов.
+Здесь собраны выполненные задания по Docker, базам данных, CI/CD и скрипты синхронизации репозиториев. Репозиторий служит личной базой знаний по администрированию серверов и автоматизации процессов.
 
 ### 🛠 Используемые технологии:
 - **Контейнеризация:** Docker, Docker Compose, Dockerfile.
@@ -28,6 +28,9 @@ myNotes/
 ├── wsl/
 │   ├── README.md
 │   └── image-*.png
+├── databases/
+│   ├── README.md
+│   └── images/
 ├── cicd/
 │   ├── README.md       # навигация по годам
 │   ├── 2025/README.md  # отчёт и скриншоты за 2025 год
@@ -58,19 +61,23 @@ myNotes/
 - Задания выполнены в WSL и оформлены со скриншотами: [wsl/README.md](wsl/README.md)
 - Внутри: команды сборки/запуска контейнеров по Dockerfile и результаты выполнения
 
-### 4) CI/CD задания (GitHub Actions)
+### 4) Практика по базам данных
+
+- Отчёты по самостоятельным заданиям собраны отдельно: [databases/README.md](databases/README.md)
+- MySQL № 1: запуск сервера в Docker, настройка кодировки и журнала, восстановление дампа и проверка данных со скриншотами
+### 5) CI/CD задания (GitHub Actions)
 
 - Задания CI/CD за 2025 год: [cicd/2025/README.md](cicd/2025/README.md)
 - Задания CI/CD за 2026 год: [cicd/2026/README.md](cicd/2026/README.md)
 - Скриншоты выполненных проектов 2026 года сохранены в [cicd/2026/images/](cicd/2026/images/)
 - Внутри: отдельные отчёты за 2025 и 2026 годы; за 2026 год оформлены CI-проекты и все восемь заданий CI/CD: публикация Rust- и Go-образов в GHCR, Go- и Python CLI, C#/.NET CLI, Go GUI, Hex Loader и Arduino Manager в GitHub Releases
 
-### 5) Docker Compose задания (Docker Compose)
+### 6) Docker Compose задания (Docker Compose)
 
 - Подробные отчеты по развертыванию 9 сервисов: [docker/README.md](docker/README.md)
 - Внутри: конфигурации (Joomla, WordPress, DB-менеджеры), порты и скриншоты работы
 
-### 6) Dockerfile задания (Dockerfile)
+### 7) Dockerfile задания (Dockerfile)
 
 - Практика по созданию образов (18+3 задания): [dockerfile/README.md](dockerfile/README.md)
 - Внутри: сборка приложений на разных языках (C++, Python, Rust, Java и др.) и скриншоты
@@ -83,6 +90,7 @@ myNotes/
 - Docker Compose: [Открыть docker/README.md](docker/README.md)
 - Dockerfile проекты: [Открыть dockerfile/README.md](dockerfile/README.md)
 - Dockerfile в WSL: [Открыть wsl/README.md](wsl/README.md)
+- Базы данных: [Открыть databases/README.md](databases/README.md)
 - CI/CD 2025: [Открыть отчёт](cicd/2025/README.md)
 - CI/CD 2026: [Открыть отчёт](cicd/2026/README.md)
 - Скрипты и инструкции: [Открыть папку skriptRepo](skriptRepo/)
