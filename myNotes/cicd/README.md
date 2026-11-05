@@ -7,6 +7,6 @@
 | Год | Содержание |
 |:--:|:--|
 | [2025](2025/README.md) | Ранее выполненные задания: инструкции, конфигурации и скриншоты. |
-| [2026](2026/README.md) | CI-проекты и первые шесть заданий CI/CD: публикация Rust- и Go-образов в GHCR, Go- и Python CLI, C#/.NET CLI и Go GUI в GitHub Releases. |
+| [2026](2026/README.md) | CI-проекты и все восемь заданий CI/CD: публикация Rust- и Go-образов в GHCR, Go- и Python CLI, C#/.NET CLI, Go GUI, Hex Loader и Arduino Manager в GitHub Releases. |
 
 [Вернуться к главной странице заметок](../README.md)
