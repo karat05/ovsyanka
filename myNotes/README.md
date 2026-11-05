@@ -30,7 +30,8 @@ myNotes/
 │   └── image-*.png
 ├── databases/
 │   ├── README.md
-│   └── images/
+│   ├── images/
+│   └── files/
 ├── cicd/
 │   ├── README.md       # навигация по годам
 │   ├── 2025/README.md  # отчёт и скриншоты за 2025 год
