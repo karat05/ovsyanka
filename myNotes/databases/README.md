@@ -1,81 +1,173 @@
-# Базы данных: выполненные задания
+# MySQL в Docker — практическая работа № 1
 
-В этом разделе отдельно собрана практика по базам данных. Задания CI/CD остаются в [разделе CI/CD](../cicd/README.md).
+**Задание:** [Интерактивная работа с MySQL в изолированном окружении Docker № 1](../../content/Courses/Basics_database_design/content/bd/Begin_MySQL_1.md)<br>
+**Где выполнялось:** WSL 2 с Docker Desktop, образ `mysql:8.0`.
 
-## MySQL в Docker
+В этой работе я поднял MySQL в отдельном контейнере, создал базу `my_database` и таблицу `users`, проверил данные, сохранил дамп и журнал SQL-запросов. Ниже описан мой ход работы; к каждому этапу приложены соответствующие скриншоты из WSL.
 
-- [Интерактивная работа с MySQL в изолированном окружении Docker № 1](README.md#mysql-docker-1)
+## Материалы работы
 
----
+- [SQL-дамп базы `my_database`](files/dump_clean.sql)
+- [Журнал SQL-действий `my_actions.log`](files/my_actions.log)
 
-<a id="mysql-docker-1"></a>
-## Интерактивная работа с MySQL в изолированном окружении Docker № 1
+## Ход работы
 
-**Исходное задание:** [Begin_MySQL_1.md](../../content/Courses/Basics_database_design/content/bd/Begin_MySQL_1.md)
+### Шаг 1. Настроил MySQL и журнал запросов
 
-### Цель работы
+В каталоге `~/my-mysql` создал `my.cnf`. Кодировку `utf8mb4` задал для сервера и клиента, а `general_log` включил для записи запросов в файл внутри контейнера.
 
-Развернуть MySQL в отдельном Docker-контейнере, настроить кодировку `utf8mb4` и общий SQL-журнал, подключиться к серверу, создать базу и таблицу, восстановить SQL-дамп и проверить записи. В конце проверить состояние контейнера, журнал MySQL, резервный дамп и системные логи контейнера.
+```ini
+[mysqld]
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+general_log = 1
+general_log_file = /var/lib/mysql/general.log
+log_output = FILE
 
-### Ход выполнения
+[client]
+default-character-set = utf8mb4
 
-1. Создан отдельный каталог `my-mysql` и конфигурация `my.cnf`. Для сервера заданы `utf8mb4` и `utf8mb4_unicode_ci`; включён общий журнал MySQL в `/var/lib/mysql/general.log` с выводом в файл. Кодировка `utf8mb4` также задана клиенту и интерактивной консоли.
-2. Запущен контейнер `my-mysql` из образа `mysql:8.0`. Каталог данных подключён через именованный Docker volume `mysql_data`, а локальный `my.cnf` смонтирован в каталог конфигурации MySQL. Контейнер работает в фоне.
-3. Через `docker exec` выполнены SQL-команды: создана база `my_database` с `utf8mb4_unicode_ci`, затем в неё восстановлен файл `dump_clean.sql`. Запрос `SELECT * FROM users` вывел пять строк — восстановленные записи пользователей.
-4. Для проверки результата выполнена команда `docker ps`: MySQL-контейнер находится в статусе `Up`, образ — `mysql:8.0`.
-5. Проверен журнал SQL-команд и системных сообщений MySQL; рабочие файлы проекта, включая `my.cnf`, `dump_clean.sql` и сохранённый журнал, находятся в каталоге `my-mysql`. Оригинальные [дамп](files/dump_clean.sql) и [журнал](files/my_actions.log) приложены к этому отчёту отдельными файлами.
-6. Просмотрено содержимое `dump_clean.sql`. Это текстовый SQL-дамп: в нём есть структура таблицы `users`, поля `id`, `name`, `email`, первичный ключ и ограничение уникальности для email.
-7. Командой `docker logs my-mysql` проверены сообщения контейнера. В конце лога MySQL сообщает, что инициализация завершена и сервер готов принимать соединения на порту 3306.
+[mysql]
+default-character-set = utf8mb4
+```
 
-### Приложенные файлы
+**Скриншот 1.** Создание каталога проекта и содержимое файла конфигурации.
 
-К отчёту добавлены исходные файлы из каталога `~/my-mysql`:
+![Мой скриншот: подготовка my.cnf для MySQL](images/mysql1-config.png)
 
-- [Скачать SQL-дамп `dump_clean.sql`](files/dump_clean.sql) — дамп базы `my_database` из MySQL 8.0.46 со схемой `users` и пятью строками данных.
-- [Скачать журнал `my_actions.log`](files/my_actions.log) — сохранённый файл общего журнала MySQL; размер около 7,3 МБ.
+### Шаг 2. Запустил контейнер
 
-Дамп содержит SQL для создания таблицы и вставки записей. Журнал приложен отдельным файлом, чтобы его можно было открыть или скачать независимо от скриншота.
+Из каталога с конфигурацией запустил официальный образ MySQL 8.0. Volume `mysql_data` хранит данные базы отдельно от контейнера.
 
-### Скриншоты подготовки
+```bash
+cd ~/my-mysql
 
-Первые три изображения показывают последовательность подготовки и проверки данных перед оформлением подтверждений для сдачи.
+docker run --name my-mysql \
+  -e MYSQL_ROOT_PASSWORD=123 \
+  -e LANG=C.UTF-8 \
+  -v mysql_data:/var/lib/mysql \
+  -v "$(pwd)/my.cnf":/etc/mysql/conf.d/my.cnf \
+  -d mysql:8.0
+```
 
-**1. Конфигурация сервера.** Создан `my.cnf`: заданы кодировка, collation и параметры общего журнала MySQL.
+Пароль `123` использовался только для учебного окружения. После запуска убедился, что Docker создал контейнер.
 
-![Файл my.cnf с utf8mb4 и включённым general log](images/mysql1-config.png)
+**Скриншот 2.** Запуск MySQL-контейнера в WSL.
 
-**2. Запуск контейнера.** Docker загрузил образ `mysql:8.0` и создал контейнер `my-mysql` с volume для данных и подключённым конфигурационным файлом.
+![Мой скриншот: запуск контейнера MySQL](images/mysql1-container-start.png)
 
-![Запуск контейнера MySQL 8.0](images/mysql1-container-start.png)
+### Шаг 3. Создал базу и проверил таблицу
 
-**3. Создание базы и проверка восстановления.** В терминале показаны команды создания `my_database`, восстановления `dump_clean.sql` и запрос к таблице `users`; в результате отображаются пять записей.
+Подключился к серверу через клиент `mysql`, создал `my_database` и таблицу `users`. В таблицу добавил пять записей и проверил их запросом `SELECT`.
 
-![Создание my_database, восстановление дампа и просмотр пользователей](images/mysql1-create-restore-select.png)
+```bash
+docker exec -it my-mysql \
+  mysql --default-character-set=utf8mb4 -uroot -p
+```
 
-### Скриншоты для сдачи
+Команды SQL в интерактивной оболочке:
 
-Начиная с четвёртого снимка приведены подтверждения состояния контейнера, журналирования, резервного дампа и готовности сервера.
+```sql
+CREATE DATABASE my_database
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
 
-**4. Работающий контейнер.** `docker ps` показывает `my-mysql` со статусом `Up` и образом `mysql:8.0`.
+USE my_database;
 
-![Контейнер my-mysql работает](images/mysql1-docker-ps.png)
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-**5. Журнал MySQL.** Просмотрен файл журнала с записями MySQL. Конфигурация `general_log` направляет общий журнал в файл внутри каталога данных сервера.
+INSERT INTO users (name, email) VALUES
+  ('Иван Петров', 'ivan@example.com'),
+  ('Пётр Петров', 'petr@example.com'),
+  ('Мария Сидорова', 'maria@example.com'),
+  ('Павел Иванов', 'pavel@example.com'),
+  ('Марк Аврелий', 'mark@example.com');
 
-![Фрагмент журнала MySQL](images/mysql1-general-log.png)
+SELECT * FROM users;
+```
 
-**6. Файлы проекта.** В `~/my-mysql` сохранены конфигурация `my.cnf`, SQL-дамп `dump_clean.sql` и файл журнала `my_actions.log`, скопированный для просмотра на хосте.
+В MySQL 8.0 таблица использует InnoDB по умолчанию. На скриншоте видны команды работы с базой и результат выборки.
 
-![Конфигурация, дамп и журнал в каталоге my-mysql](images/mysql1-project-files.png)
+**Скриншот 3.** Создание базы, восстановление SQL-файла и проверка пяти записей в `users`.
 
-**7. Содержимое дампа.** В начале `dump_clean.sql` указаны MySQL 8.0.46 и база `my_database`; ниже виден SQL для создания таблицы `users` с полями `id`, `name`, `email`.
+![Мой скриншот: команды MySQL и вывод SELECT](images/mysql1-create-restore-select.png)
 
-![Фрагмент SQL-дампа с определением таблицы users](images/mysql1-dump-contents.png)
+### Шаг 4. Сохранил дамп и проверил восстановление
 
-**8. Логи Docker-контейнера.** В выводе есть сообщения инициализации, а в конце — `ready for connections` и порт `3306`. В логах также встречаются предупреждения MySQL о параметрах и временных зонах; запуск завершился успешно.
+Экспортировал базу в `dump_clean.sql` с помощью `mysqldump`. Затем загрузил дамп обратно в `my_database` и повторно вывел строки таблицы, чтобы убедиться, что данные восстановились.
 
-![Логи и успешная готовность MySQL принимать подключения](images/mysql1-container-logs.png)
+```bash
+docker exec -e MYSQL_PWD=123 my-mysql mysqldump -uroot \
+  --set-gtid-purged=OFF \
+  --single-transaction \
+  my_database > dump_clean.sql
 
----
+# Очищаю старые записи до проверки восстановления
+docker exec my-mysql sh -c ': > /var/lib/mysql/general.log'
 
-[Вернуться к списку заданий по базам данных](README.md#mysql-docker-1) · [К оглавлению заметок](../README.md)
+docker exec -i -e MYSQL_PWD=123 my-mysql \
+  mysql --default-character-set=utf8mb4 -uroot my_database \
+  < dump_clean.sql
+
+docker exec -e MYSQL_PWD=123 my-mysql mysql -uroot -e \
+  "USE my_database; SELECT * FROM users;"
+```
+
+Файл дампа — самостоятельный артефакт работы, его можно скачать в начале README. На следующем снимке показан заголовок дампа и описание таблицы `users`.
+
+**Скриншот 4.** Просмотр SQL-дампа перед восстановлением.
+
+![Мой скриншот: содержимое dump_clean.sql](images/mysql1-dump-contents.png)
+
+### Шаг 5. Выгрузил журнал запросов
+
+Сначала очистил общий журнал от предыдущих записей, затем сохранил выполненные SQL-действия в `my_actions.log`. Из журнала убраны типовые команды сессии и блокировки, добавляемые при экспорте дампа; оставлены действия с таблицей.
+
+```bash
+docker exec my-mysql cat /var/lib/mysql/general.log \
+  | grep "Query" \
+  | grep -viE 'Query[[:space:]]+(/\*!|SET[[:space:]]|SELECT @@|LOCK TABLES|UNLOCK TABLES|SHOW[[:space:]])' \
+  > my_actions.log
+```
+
+В сохранённом логе видны удаление старой таблицы при импорте, создание `users`, вставка записей и их чтение. Полный журнал приложен отдельным файлом.
+
+**Скриншоты 5–6.** Просмотр журнала запросов и файлов проекта в WSL. В каталоге сдачи дамп и итоговый лог приложены отдельно.
+
+![Мой скриншот: журнал MySQL](images/mysql1-general-log.png)
+
+![Мой скриншот: файлы проекта](images/mysql1-project-files.png)
+
+### Шаг 6. Проверил контейнер и состояние сервера
+
+Проверил, что контейнер `my-mysql` работает, и просмотрел последние сообщения Docker-логов. Строка `ready for connections` означает, что сервер MySQL готов принимать подключения.
+
+```bash
+docker ps --filter name=my-mysql
+docker logs my-mysql --tail 20
+ls -lh dump_clean.sql my_actions.log
+```
+
+**Скриншот 7.** Контейнер MySQL виден в выводе `docker ps`.
+
+![Мой скриншот: проверка docker ps](images/mysql1-docker-ps.png)
+
+**Скриншот 8.** Системные сообщения контейнера и статус готовности MySQL.
+
+![Мой скриншот: логи контейнера MySQL](images/mysql1-container-logs.png)
+
+## Что сдано
+
+| Артефакт | Что в нём находится |
+| --- | --- |
+| [`dump_clean.sql`](files/dump_clean.sql) | Структура таблицы `users` и данные из базы `my_database`. |
+| [`my_actions.log`](files/my_actions.log) | Основные SQL-действия, оставленные после очистки журнала от технических команд экспорта. |
+| `images/` | Мои скриншоты настройки, запуска контейнера, работы с базой, дампом и логами. |
+
+## Итог
+
+MySQL работает в отдельном Docker-контейнере. База и таблица созданы, данные проверены до и после восстановления дампа, журнал SQL-действий сохранён рядом с README. Для заметок по другим учебным работам: [оглавление](../README.md) · [CI/CD](../cicd/README.md).
