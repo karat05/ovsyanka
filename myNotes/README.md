@@ -66,6 +66,7 @@ myNotes/
 
 - Отчёты по самостоятельным заданиям собраны отдельно: [databases/README.md](databases/README.md)
 - MySQL № 1: запуск сервера в Docker, настройка кодировки и журнала, восстановление дампа и проверка данных со скриншотами
+- MySQL № 2: проектирование таблиц, запросы и JOIN, логирование действий, экспорт журнала и дампа, удаление и восстановление базы: [databases/mysql-2/README.md](databases/mysql-2/README.md)
 ### 5) CI/CD задания (GitHub Actions)
 
 - Задания CI/CD за 2025 год: [cicd/2025/README.md](cicd/2025/README.md)
@@ -92,6 +93,7 @@ myNotes/
 - Dockerfile проекты: [Открыть dockerfile/README.md](dockerfile/README.md)
 - Dockerfile в WSL: [Открыть wsl/README.md](wsl/README.md)
 - Базы данных: [Открыть databases/README.md](databases/README.md)
+- MySQL № 2: [Открыть отдельный отчёт](databases/mysql-2/README.md)
 - CI/CD 2025: [Открыть отчёт](cicd/2025/README.md)
 - CI/CD 2026: [Открыть отчёт](cicd/2026/README.md)
 - Скрипты и инструкции: [Открыть папку skriptRepo](skriptRepo/)

@@ -1,0 +1,56 @@
+event_time	command_type	argument
+2026-11-12 12:16:50.869723	Query	CREATE DATABASE sql_practice\n  CHARACTER SET utf8mb4\n  COLLATE utf8mb4_unicode_ci
+2026-11-12 11:57:49.268704	Query	ALTER TABLE customers DROP COLUMN phone
+2026-11-12 11:57:49.167852	Query	ALTER TABLE customers MODIFY COLUMN phone VARCHAR(30)
+2026-11-12 11:57:49.165945	Query	SELECT * FROM customers WHERE id = 4
+2026-11-12 11:57:49.114258	Query	UPDATE customers SET phone = '123-36-77' WHERE id = 4
+2026-11-12 11:57:48.846208	Query	ALTER TABLE customers ADD COLUMN phone VARCHAR(20)
+2026-11-12 11:57:48.844871	Query	SELECT * FROM orders
+2026-11-12 11:57:48.795031	Query	DELETE FROM orders WHERE id = 6
+2026-11-12 11:57:48.794385	Query	SELECT * FROM orders WHERE id = 3
+2026-11-12 11:57:48.793800	Query	SELECT * FROM customers WHERE id = 4
+2026-11-12 11:57:48.695790	Query	UPDATE orders SET status = 'paid' WHERE id = 3
+2026-11-12 11:57:48.641683	Query	UPDATE customers SET city = 'Екатеринбург' WHERE id = 4
+2026-11-12 11:57:21.860844	Query	SELECT city FROM customers\nUNION ALL\nSELECT city FROM customers
+2026-11-12 11:57:21.859918	Query	SELECT name, city FROM customers WHERE city = 'Москва'\nUNION\nSELECT name, city FROM customers WHERE city = 'Казань'
+2026-11-12 11:57:21.858759	Query	SELECT name FROM customers c\nWHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.id)
+2026-11-12 11:57:21.857879	Query	SELECT name FROM customers c\nWHERE EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.id)
+2026-11-12 11:57:21.856979	Query	SELECT c.name,\n       (SELECT COUNT(*) FROM orders o WHERE o.customer_id = c.id) AS order_count\nFROM customers c
+2026-11-12 11:57:21.855391	Query	SELECT c.name, o.total\nFROM customers c\nJOIN (\n    SELECT customer_id, SUM(amount) AS total\n    FROM orders GROUP BY customer_id\n) o ON c.id = o.customer_id\nWHERE o.total > 2000
+2026-11-12 11:57:21.853343	Query	SELECT name, city FROM customers\nWHERE id = (SELECT customer_id FROM orders ORDER BY amount DESC LIMIT 1)
+2026-11-12 11:57:21.823334	Query	SELECT name, city FROM customers\nWHERE id IN (SELECT customer_id FROM orders WHERE amount > 1000)
+2026-11-12 11:57:04.817384	Query	SELECT c.name,\n       COUNT(o.id) AS order_count,\n       COALESCE(SUM(o.amount), 0) AS total_amount\nFROM customers c\nLEFT JOIN orders o ON c.id = o.customer_id\nGROUP BY c.id, c.name\nORDER BY total_amount DESC
+2026-11-12 11:57:04.815682	Query	SELECT c.name, o.id AS order_id\nFROM customers c\nRIGHT JOIN orders o ON c.id = o.customer_id
+2026-11-12 11:57:04.814340	Query	SELECT c.name, o.id AS order_id, o.amount\nFROM customers c\nLEFT JOIN orders o ON c.id = o.customer_id
+2026-11-12 11:57:04.813084	Query	SELECT c.name, o.order_date, o.amount, o.status\nFROM customers c\nINNER JOIN orders o ON c.id = o.customer_id
+2026-11-12 11:56:44.015773	Query	SELECT customer_id, SUM(amount) AS total_amount\nFROM orders\nGROUP BY customer_id\nHAVING SUM(amount) > 2000
+2026-11-12 11:56:44.014081	Query	SELECT c.name, COUNT(o.id) AS order_count, SUM(o.amount) AS total_amount\nFROM customers c\nJOIN orders o ON c.id = o.customer_id\nGROUP BY c.id, c.name\nORDER BY total_amount DESC
+2026-11-12 11:56:44.012063	Query	SELECT customer_id, COUNT(*) AS order_count, SUM(amount) AS total_amount\nFROM orders\nGROUP BY customer_id
+2026-11-12 11:56:43.936686	Query	SELECT MIN(amount) AS min_amount, MAX(amount) AS max_amount FROM orders
+2026-11-12 11:56:43.936057	Query	SELECT AVG(amount) AS avg_amount FROM orders
+2026-11-12 11:56:43.906314	Query	SELECT SUM(amount) AS total_sum FROM orders
+2026-11-12 11:56:43.905122	Query	SELECT COUNT(*) AS total_orders FROM orders
+2026-11-12 11:56:10.777436	Query	SELECT * FROM customers WHERE city IS NULL
+2026-11-12 11:56:10.776785	Query	SELECT * FROM customers WHERE city IN ('Москва', 'Казань')
+2026-11-12 11:56:10.775732	Query	SELECT * FROM orders WHERE amount BETWEEN 1000 AND 3000
+2026-11-12 11:56:10.775068	Query	SELECT * FROM customers WHERE email LIKE '%@example.com'
+2026-11-12 11:56:10.774413	Query	SELECT * FROM customers WHERE name LIKE 'И%'
+2026-11-12 11:56:10.774012	Query	SELECT * FROM orders ORDER BY amount DESC LIMIT 3
+2026-11-12 11:56:10.773521	Query	SELECT * FROM orders ORDER BY order_date DESC, amount ASC
+2026-11-12 11:56:10.772739	Query	SELECT * FROM orders ORDER BY amount DESC
+2026-11-12 11:56:10.772093	Query	SELECT * FROM customers ORDER BY name
+2026-11-12 11:56:10.771325	Query	SELECT * FROM orders WHERE status = 'new' OR status = 'cancelled'
+2026-11-12 11:56:10.770785	Query	SELECT * FROM orders WHERE status = 'paid' AND amount > 1500
+2026-11-12 11:56:10.770095	Query	SELECT * FROM orders WHERE amount > 1000
+2026-11-12 11:56:10.769487	Query	SELECT * FROM customers WHERE city = 'Москва'
+2026-11-12 11:56:10.768642	Query	SELECT name, city FROM customers
+2026-11-12 11:56:10.767895	Query	SELECT * FROM customers
+2026-11-12 11:55:38.841273	Query	SELECT * FROM orders
+2026-11-12 11:55:38.840605	Query	SELECT * FROM customers
+2026-11-12 11:55:38.818140	Query	INSERT INTO orders (customer_id, order_date, amount, status) VALUES\n  (1, '2026-10-01', 1500.00, 'paid'),\n  (1, '2026-10-05', 2300.50, 'paid'),\n  (2, '2026-10-03', 800.00, 'new'),\n  (3, '2026-10-07', 4200.00, 'paid'),\n  (3, '2026-10-10', 1100.00, 'cancelled'),\n  (4, '2026-10-12', 950.00, 'new')
+2026-11-12 11:55:38.653668	Query	INSERT INTO customers (name, email, city) VALUES\n  ('Иван Иванов', 'ivan@example.com', 'Москва'),\n  ('Пётр Петров', 'petr@example.com', 'Санкт-Петербург'),\n  ('Мария Сидорова', 'maria@example.com', 'Москва'),\n  ('Алексей Смирнов', 'alex@example.com', 'Казань'),\n  ('Ольга Кузнецова', 'olga@example.com', 'Новосибирск')
+2026-11-12 11:55:38.650741	Query	SELECT * FROM orders
+2026-11-12 11:55:38.650215	Query	SELECT * FROM customers
+2026-11-12 11:49:35.881095	Query	CREATE TABLE orders (\n    id INT AUTO_INCREMENT PRIMARY KEY,\n    customer_id INT NOT NULL,\n    order_date DATE NOT NULL,\n    amount DECIMAL(10, 2) NOT NULL,\n    status VARCHAR(20) DEFAULT 'new',\n    FOREIGN KEY (customer_id) REFERENCES customers(id)\n) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+2026-11-12 11:49:35.325732	Query	CREATE TABLE customers (\n    id INT AUTO_INCREMENT PRIMARY KEY,\n    name VARCHAR(100) NOT NULL,\n    email VARCHAR(100) NOT NULL UNIQUE,\n    city VARCHAR(100),\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+2026-11-12 11:48:46.200805	Query	CREATE DATABASE sql_practice\n  CHARACTER SET utf8mb4\n  COLLATE utf8mb4_unicode_ci
