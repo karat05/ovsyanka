@@ -67,6 +67,7 @@ myNotes/
 - **Задание 1 — MySQL в Docker:** запуск сервера, настройка кодировки и журнала, создание базы и таблицы, сохранение дампа и проверка данных. [Открыть README задания 1](databases/README.md)
 - **Задание 2 — Интерактивная работа с MySQL:** проектирование таблиц, SQL-запросы и JOIN, журналирование действий, экспорт лога и дампа, удаление и восстановление базы. [Открыть README задания 2](databases/mysql-2/README.md)
 - **Задание 3 — SQL-операции над таблицами товаров:** выборка, UNION, EXCEPT, INTERSECT, CROSS JOIN, восстановление базы из дампа. [Открыть README задания 3](databases/products/README.md)
+- **Задание 4 — Представления в MySQL:** создание VIEW, фильтрация и агрегация, `WITH CHECK OPTION`, права доступа, дамп и журнал команд. [Открыть README задания 4](databases/mysql-views/README.md)
 
 ### 5) CI/CD задания (GitHub Actions)
 
@@ -95,6 +96,7 @@ myNotes/
 - Dockerfile в WSL: [Открыть wsl/README.md](wsl/README.md)
 - Базы данных: [Открыть databases/README.md](databases/README.md)
 - MySQL № 2: [Открыть отдельный отчёт](databases/mysql-2/README.md)
+- VIEW в MySQL: [Открыть отдельный отчёт](databases/mysql-views/README.md)
 - CI/CD 2025: [Открыть отчёт](cicd/2025/README.md)
 - CI/CD 2026: [Открыть отчёт](cicd/2026/README.md)
 - Скрипты и инструкции: [Открыть папку skriptRepo](skriptRepo/)
