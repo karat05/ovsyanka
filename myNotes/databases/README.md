@@ -1,5 +1,7 @@
 # MySQL в Docker — практическая работа № 1
 
+Другие самостоятельные задания по базам данных: [задание № 2](mysql-2/README.md) · [задание № 3 — SQL-операции над товарами](products/README.md).
+
 **Задание:** [Интерактивная работа с MySQL в изолированном окружении Docker № 1](../../content/Courses/Basics_database_design/content/bd/Begin_MySQL_1.md)<br>
 **Где выполнялось:** WSL 2 с Docker Desktop, образ `mysql:8.0`.
 

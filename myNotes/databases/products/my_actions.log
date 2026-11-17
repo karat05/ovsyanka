@@ -1,0 +1,24 @@
+2026-11-17 10:54:52.293998 | Query | CREATE DATABASE shop   CHARACTER SET utf8mb4   COLLATE utf8mb4_unicode_ci
+2026-11-17 10:55:14.532629 | Query | DROP TABLE IF EXISTS `products1`
+2026-11-17 10:55:14.596915 | Query | CREATE TABLE `products1` (   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,   `price` int NOT NULL ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+2026-11-17 10:55:14.928666 | Query | LOCK TABLES `products1` WRITE
+2026-11-17 10:55:14.929441 | Query | /*!40000 ALTER TABLE `products1` DISABLE KEYS */
+2026-11-17 10:55:14.961679 | Query | INSERT INTO `products1` VALUES ('Дыни',800),('Клубника',150),('Яблоки',120),('Лимоны',200)
+2026-11-17 10:55:15.008925 | Query | /*!40000 ALTER TABLE `products1` ENABLE KEYS */
+2026-11-17 10:55:15.053357 | Query | DROP TABLE IF EXISTS `products2`
+2026-11-17 10:55:15.086857 | Query | CREATE TABLE `products2` (   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,   `price` int NOT NULL ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+2026-11-17 10:55:15.621966 | Query | LOCK TABLES `products2` WRITE
+2026-11-17 10:55:15.622718 | Query | /*!40000 ALTER TABLE `products2` DISABLE KEYS */
+2026-11-17 10:55:15.710545 | Query | INSERT INTO `products2` VALUES ('Дыни',800),('Клубника',150),('Каштаны',200),('Хурма',350)
+2026-11-17 10:55:15.901234 | Query | /*!40000 ALTER TABLE `products2` ENABLE KEYS */
+2026-11-17 10:55:33.010866 | Query | SELECT * FROM products1
+2026-11-17 10:55:33.977003 | Query | SELECT * FROM products2
+2026-11-17 10:55:50.899681 | Query | SELECT * FROM products1 WHERE price > 150
+2026-11-17 10:55:50.900350 | Query | SELECT name FROM products1
+2026-11-17 10:55:50.901147 | Query | SELECT name FROM products1 UNION SELECT name FROM products2
+2026-11-17 10:55:50.902134 | Query | SELECT name, price FROM products1 EXCEPT SELECT name, price FROM products2
+2026-11-17 10:55:50.903079 | Query | SELECT name, price FROM products1 INTERSECT SELECT name, price FROM products2
+2026-11-17 10:55:50.904392 | Query | SELECT t1.name AS name1, t1.price AS price1,        t2.name AS name2, t2.price AS price2 FROM products1 t1 CROSS JOIN products2 t2
+2026-11-17 10:55:50.905906 | Query | SELECT t1.name, t1.price AS price1, t2.price AS price2 FROM products1 t1 JOIN products2 t2 ON t1.name = t2.name
+2026-11-17 10:55:51.546919 | Query | SELECT t1.name, t1.price AS price1, t2.price AS price2 FROM products1 t1 LEFT JOIN products2 t2 ON t1.name = t2.name
+2026-11-17 10:56:09.727421 | Query | SELECT CONCAT(   event_time, ' | ', command_type, ' | ',   REPLACE(REPLACE(argument, CHAR(13), ' '), CHAR(10), ' ') ) FROM mysql.general_log WHERE user_host LIKE '%root%'   AND command_type = 'Query'   AND (     argument LIKE '%products1%'     OR argument LIKE '%products2%'     OR argument LIKE 'CREATE DATABASE shop%'     OR argument = 'USE shop'     OR argument LIKE 'DROP DATABASE shop%'   )   AND argument NOT LIKE 'SELECT CONCAT(event_time%'   AND argument NOT LIKE 'SELECT COLUMN_NAME%'   AND argument NOT LIKE 'SHOW FULL COLUMNS%' ORDER BY event_time
